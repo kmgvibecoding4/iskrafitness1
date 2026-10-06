@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Искра — фитнес-студия групповых занятий</title>
+<meta name="description" content="Групповые занятия для взрослых, детей, подростков и оздоровительные группы. Расписание, цены и бесплатное пробное занятие.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff1f4; --surface:#ffffff; --ink:#2b1230; --muted:#6d5273; --line:#2b1230;
+  --orange:#ff6a2b; --pink:#ff3d8b; --yellow:#ffc928;
+  --violet:#8b5cf6; --mint:#2fd1a0; --lime:#a3e635; --blue:#3b82f6; --teal:#14b8c4;
+  --shadow:4px 4px 0 var(--line);
+  --r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#1c0e20; --surface:#2a1730; --ink:#fff1f4; --muted:#c4a9ca; --line:#fff1f4;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:Onest,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:16px}
+h1,h2,h3,.logo{font-family:Unbounded,Onest,sans-serif;margin:0;line-height:1.15}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.eyebrow{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--yellow);color:#2b1230;border:2px solid var(--line);border-radius:99px;padding:3px 12px;margin-bottom:14px}
+h2{font-size:clamp(26px,4.5vw,40px);font-weight:800;margin-bottom:12px}
+.lead{color:var(--muted);max-width:640px;margin:0 0 32px;font-size:17px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px Onest,sans-serif;text-decoration:none;cursor:pointer;
+  background:var(--orange);color:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 22px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.alt{background:var(--surface);color:var(--ink)}
+.btn[disabled]{background:#cdbcd1;color:#6d5273;cursor:not-allowed;box-shadow:none;transform:none}
+.btn.sm{padding:8px 14px;font-size:14px;border-radius:10px;box-shadow:3px 3px 0 var(--line)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:2px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{font-weight:800;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:50%;background:var(--orange);border:2px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:16px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:500;font-size:15px}
+nav a:hover{color:var(--pink)}
+@media (max-width:860px){nav{display:none}}
+@media (max-width:420px){header .btn{padding:8px 12px;font-size:14px}}
+
+/* hero */
+.hero{padding:56px 0 72px;background:linear-gradient(135deg,var(--yellow) 0,var(--orange) 55%,var(--pink) 100%);border-bottom:2px solid var(--line);color:#2b1230}
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;margin-bottom:18px}
+.hero p{font-size:18px;max-width:520px;margin:0 0 26px}
+.hero .btn.alt{color:#2b1230;background:#fff}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.stickers{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.sticker{font-weight:700;font-size:14px;padding:6px 14px;border:2px solid #2b1230;border-radius:99px;color:#2b1230;box-shadow:3px 3px 0 #2b1230;animation:pop .5s backwards cubic-bezier(.3,1.6,.5,1)}
+.sticker:nth-child(odd){transform:rotate(-3deg)} .sticker:nth-child(even){transform:rotate(2.5deg)}
+@keyframes pop{from{opacity:0;scale:.3}}
+.today{background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:var(--r);box-shadow:8px 8px 0 #2b1230;padding:22px}
+.today h2{font-size:20px;margin-bottom:4px}
+.today small{color:var(--muted);display:block;margin-bottom:14px}
+.mini{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:2px dashed color-mix(in srgb,var(--line) 25%,transparent)}
+.mini b{font-family:Unbounded;font-size:17px;min-width:58px}
+.mini span{display:block;font-size:14px;color:var(--muted)}
+.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);flex:none}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+
+/* about */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fact{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.fact b{display:block;font-family:Unbounded;font-size:30px;color:var(--pink);margin-bottom:6px}
+.fact p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:860px){.facts{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}}
+
+/* directions */
+.dirs-bg{background:var(--surface);border-block:2px solid var(--line)}
+.group{margin-bottom:40px}
+.group h3{font-size:20px;margin-bottom:6px}
+.group>p{color:var(--muted);margin:0 0 16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{border:2px solid var(--line);border-radius:var(--r);padding:18px;background:var(--c);color:#2b1230;box-shadow:var(--shadow);transition:transform .2s}
+.card:hover{transform:translateY(-4px) rotate(-.5deg)}
+.card h4{font-family:Unbounded;font-size:17px;margin:0 0 6px}
+.card p{margin:0 0 12px;font-size:14.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12.5px;font-weight:600;background:rgba(255,255,255,.65);border:1.5px solid #2b1230;border-radius:99px;padding:2px 10px}
+
+/* schedule */
+.sched-bg{background:linear-gradient(180deg,var(--bg),color-mix(in srgb,var(--violet) 14%,var(--bg)))}
+.days{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 12px;margin:0 -4px}
+.day{flex:1 0 74px;font:600 14px Onest;text-align:center;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:8px 6px;cursor:pointer;transition:transform .15s}
+.day:hover{transform:translateY(-2px)}
+.day span{display:block;font-weight:400;font-size:12.5px;color:var(--muted)}
+.day[aria-selected=true]{background:var(--pink);color:#fff;box-shadow:var(--shadow)}
+.day[aria-selected=true] span{color:#fff}
+.day em{display:block;font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 22px}
+.chip{font:600 14px Onest;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:99px;padding:6px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:11px;height:11px;border-width:1.5px}
+.chip[aria-pressed=true]{background:var(--c,var(--ink));color:#2b1230;box-shadow:3px 3px 0 var(--line)}
+.chip.all[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.list{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;background:var(--surface);border:2px solid var(--line);border-left:10px solid var(--c);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);animation:in .3s backwards}
+@keyframes in{from{opacity:0;translate:0 8px}}
+.row .t{font-family:Unbounded;font-weight:800;font-size:20px}
+.row .t small{display:block;font:500 13px Onest;color:var(--muted)}
+.row h3{font-size:16px;margin-bottom:3px}
+.row p{margin:0;color:var(--muted);font-size:14px}
+.row .side{display:flex;align-items:center;gap:14px;text-align:right}
+.seats{font-size:13.5px;font-weight:600}
+.seats.low{color:var(--pink)} .seats.out{color:var(--muted)}
+.empty{background:var(--surface);border:2px dashed var(--line);border-radius:16px;padding:28px;text-align:center;color:var(--muted)}
+@media (max-width:620px){.row{grid-template-columns:1fr;gap:8px}.row .side{justify-content:space-between;text-align:left}}
+
+/* trainers */
+.trainers{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.trainer{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.ava{width:68px;height:68px;border-radius:50%;background:var(--c);border:2px solid var(--line);display:grid;place-items:center;font:800 24px Unbounded;color:#2b1230;margin-bottom:12px}
+.trainer h3{font-size:17px}
+.trainer .role{font-weight:600;font-size:14px;color:var(--pink);margin:2px 0 8px}
+.trainer p{margin:0;color:var(--muted);font-size:14.5px}
+
+/* prices */
+.prices-bg{background:var(--yellow);border-block:2px solid var(--line);color:#2b1230}
+.prices-bg .lead{color:#4b2c52}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+.plan{background:#fff;border:2px solid #2b1230;border-radius:var(--r);padding:24px;box-shadow:5px 5px 0 #2b1230;position:relative}
+.plan.hot{background:var(--pink);color:#fff}
+.plan .badge{position:absolute;top:-14px;right:16px;background:var(--yellow);color:#2b1230;border:2px solid #2b1230;border-radius:99px;font-weight:700;font-size:12px;padding:2px 12px}
+.plan h3{font-size:16px;margin-bottom:10px}
+.plan .p{font:800 32px Unbounded;margin-bottom:6px}
+.plan p{margin:0;font-size:14.5px}
+.plans.two{grid-template-columns:repeat(2,1fr)}
+.plan ul{margin:10px 0 0;padding-left:18px;font-size:14.5px}
+.note{background:#fff;border:2px solid #2b1230;border-radius:14px;padding:12px 16px;margin:0 0 12px;font-size:15px}
+@media (max-width:860px){.plans,.plans.two{grid-template-columns:1fr}}
+
+/* form */
+.signup{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.perks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.perks li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px 16px}
+.perks li::before{content:"✦";color:var(--orange);font-weight:800}
+form{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);box-shadow:8px 8px 0 var(--pink);padding:24px;display:grid;gap:16px}
+label,legend{font-weight:600;font-size:14.5px;display:block;margin-bottom:6px;padding:0}
+fieldset{border:0;padding:0;margin:0}
+input[type=text],input[type=tel],select{width:100%;font:500 16px Onest;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:11px 14px}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{margin:0;font-weight:500;border:2px solid var(--line);border-radius:99px;padding:6px 14px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.radios input{accent-color:var(--pink)}
+.radios label:has(input:checked){background:var(--yellow);color:#2b1230;font-weight:600}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--pink);flex:none}
+.err{color:#d6204f;font-size:13.5px;font-weight:600;margin-top:5px;min-height:0}
+@media (prefers-color-scheme:dark){.err{color:#ff8aa9}}
+input[aria-invalid=true],select[aria-invalid=true]{border-color:#d6204f}
+.ok{background:var(--mint);color:#2b1230;border:2px solid var(--line);border-radius:14px;padding:18px;font-weight:500}
+.ok b{font-family:Unbounded;display:block;font-size:18px;margin-bottom:6px}
+[hidden]{display:none!important}
+@media (max-width:860px){.signup{grid-template-columns:1fr}}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.info{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.info dl{margin:0;display:grid;gap:14px}
+.info dt{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.info dd{margin:2px 0 0;font-size:17px;font-weight:500}
+.map{border:2px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);background:var(--surface);overflow:hidden}
+.map svg{display:block;width:100%;height:100%;min-height:260px}
+@media (max-width:860px){.contacts{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:var(--bg);padding:28px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i aria-hidden="true">⚡</i>Искра</a>
+    <nav aria-label="Основное меню">
+      <ul>
+        <li><a href="#about">О студии</a></li>
+        <li><a href="#directions">Направления</a></li>
+        <li><a href="#schedule">Расписание</a></li>
+        <li><a href="#trainers">Тренеры</a></li>
+        <li><a href="#prices">Цены</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <a class="btn sm" href="#signup">Пробное занятие</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Занимайтесь вместе. Зажигайтесь сами.</h1>
+      <p>Студия групповых занятий для взрослых, детей, подростков и тех, кто двигается для здоровья. Первое пробное — бесплатно.</p>
+      <div class="cta">
+        <a class="btn alt" href="#schedule">Смотреть расписание</a>
+        <a class="btn" style="background:#2b1230" href="#signup">Записаться на пробное</a>
+      </div>
+      <div class="stickers" id="stickers" aria-hidden="true"></div>
+    </div>
+    <aside class="today" aria-live="polite">
+      <h2>Сегодня в студии</h2>
+      <small id="todayNote"></small>
+      <div id="todayList"></div>
+    </aside>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">О студии</span>
+    <h2>Спорт без страха и скуки</h2>
+    <p class="lead">«Искра» — светлая студия, где каждый находит свою группу: новички, мамы с детьми, подростки и люди 50+. Тренеры следят за техникой, а не за цифрами на весах.</p>
+    <div class="facts">
+      <div class="fact"><b>до 12</b><p>человек в группе — тренер видит каждого</p></div>
+      <div class="fact"><b>3 зала</b><p>светлые, с хорошей вентиляцией и зеркалами</p></div>
+      <div class="fact"><b>3 уровня</b><p>от «никогда не занимался» до «хочу больше»</p></div>
+      <div class="fact"><b>0 ₸</b><p>инвентарь выдаём бесплатно: коврики, гантели, степы</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="directions" class="dirs-bg">
+  <div class="wrap">
+    <span class="eyebrow">Направления</span>
+    <h2>Найдите своё</h2>
+    <p class="lead">Каждое направление живёт в своём цвете — по нему легко узнавать занятия в расписании.</p>
+    <div id="dirGroups"></div>
+  </div>
+</section>
+
+<section id="schedule" class="sched-bg">
+  <div class="wrap">
+    <span class="eyebrow">Расписание</span>
+    <h2>Выберите день и время</h2>
+    <p class="lead">Нажмите на день недели и отфильтруйте занятия по направлению.</p>
+    <div class="days" role="tablist" aria-label="Дни недели" id="days"></div>
+    <div class="filters" role="group" aria-label="Фильтр по направлению" id="filters"></div>
+    <div class="list" id="schedList" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="trainers">
+  <div class="wrap">
+    <span class="eyebrow">Тренеры</span>
+    <h2>Люди, которые зажигают</h2>
+    <p class="lead">Сертифицированные тренеры с опытом работы с разными возрастами.</p>
+    <div class="trainers" id="trainerList"></div>
+  </div>
+</section>
+
+<section id="prices" class="prices-bg">
+  <div class="wrap">
+    <span class="eyebrow" style="background:#fff">Цены</span>
+    <h2>Абонементы</h2>
+    <p class="lead">Первое пробное занятие бесплатно — для взрослых, детей и подростков.</p>
+    <h3 style="margin-bottom:16px">Взрослые</h3>
+    <div class="plans">
+      <div class="plan"><h3>Разовое занятие</h3><div class="p">3 500 ₸</div><p>Любое направление, без обязательств.</p></div>
+      <div class="plan hot"><span class="badge">Выгодно</span><h3>8 занятий</h3><div class="p">22 000 ₸</div><p>Действует 5 недель. Можно менять направления.</p></div>
+      <div class="plan"><h3>Безлимит на месяц</h3><div class="p">35 000 ₸</div><p>Сколько угодно занятий в течение 30 дней.</p></div>
+    </div>
+    <h3 style="margin-bottom:16px">Дети, подростки и здоровье</h3>
+    <div class="plans two">
+      <div class="plan"><h3>Дети 3–10 и подростки 12–17</h3><div class="p">от 18 000 ₸</div><ul><li>8 занятий в месяц</li><li>скидка 10% на второго ребёнка</li></ul></div>
+      <div class="plan"><h3>Оздоровительные группы</h3><div class="p">от 20 000 ₸</div><ul><li>8 занятий в месяц</li><li>небольшие группы до 8 человек</li></ul></div>
+    </div>
+    <p class="note">⚠️ Перед занятиями в оздоровительных группах рекомендуем проконсультироваться с врачом.</p>
+  </div>
+</section>
+
+<section id="signup">
+  <div class="wrap signup">
+    <div>
+      <span class="eyebrow">Запись</span>
+      <h2>Пробное занятие — бесплатно</h2>
+      <p class="lead">Оставьте заявку — администратор перезвонит и подтвердит время.</p>
+      <ul class="perks">
+        <li>Бесплатное занятие в любой группе</li>
+        <li>Тренер подскажет подходящий уровень</li>
+        <li>Инвентарь и раздевалка — с нами</li>
+        <li>Без обязательств покупать абонемент</li>
+      </ul>
+    </div>
+    <div>
+      <form id="form" novalidate>
+        <div>
+          <label for="name">Имя</label>
+          <input type="text" id="name" autocomplete="name" aria-describedby="nameErr">
+          <div class="err" id="nameErr"></div>
+        </div>
+        <div>
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" autocomplete="tel" placeholder="+7 ___ ___ __ __" aria-describedby="phoneErr">
+          <div class="err" id="phoneErr"></div>
+        </div>
+        <fieldset>
+          <legend>Кто будет заниматься</legend>
+          <div class="radios">
+            <label><input type="radio" name="who" value="Я" checked> Я</label>
+            <label><input type="radio" name="who" value="Ребёнок до 12 лет"> Ребёнок до 12 лет</label>
+            <label><input type="radio" name="who" value="Подросток 12–17 лет"> Подросток 12–17 лет</label>
+          </div>
+        </fieldset>
+        <div>
+          <label for="classSel">Занятие</label>
+          <select id="classSel"></select>
+        </div>
+        <div>
+          <label class="check"><input type="checkbox" id="agree" aria-describedby="agreeErr"> Согласен на обработку персональных данных</label>
+          <div class="err" id="agreeErr"></div>
+        </div>
+        <button class="btn" type="submit">Записаться</button>
+      </form>
+      <div class="ok" id="ok" hidden role="status"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Контакты</span>
+    <h2>Как нас найти</h2>
+    <p class="lead">Данные ниже — примерные, их нужно заменить реальными.</p>
+    <div class="contacts">
+      <div class="info">
+        <dl>
+          <div><dt>Адрес</dt><dd>г. Алматы, ул. Примерная, 12</dd></div>
+          <div><dt>Часы работы</dt><dd>Пн–Пт 07:00–22:00<br>Сб–Вс 09:00–20:00</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+77000000000">+7 700 000 00 00</a></dd></div>
+          <div><dt>Telegram</dt><dd><a href="#">@iskra_fitness</a></dd></div>
+        </dl>
+      </div>
+      <div class="map" role="img" aria-label="Схема проезда (условная)">
+        <svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="280" fill="#ffe3ea"/>
+          <g stroke="#fff" stroke-width="16" fill="none"><path d="M0 90H400M0 200H400M110 0V280M280 0V280"/></g>
+          <g fill="#2fd1a0" stroke="#2b1230" stroke-width="2"><rect x="130" y="110" width="130" height="75" rx="10" opacity=".35"/><rect x="300" y="20" width="80" height="55" rx="10"/><rect x="20" y="215" width="70" height="50" rx="10"/></g>
+          <g transform="translate(195 130)"><path d="M0 0c-18-22-18-48 0-48s18 26 0 48z" transform="translate(0 20)" fill="#ff3d8b" stroke="#2b1230" stroke-width="3"/><circle cy="-8" r="6" fill="#fff" stroke="#2b1230" stroke-width="2"/></g>
+          <text x="195" y="168" text-anchor="middle" font-family="Unbounded,sans-serif" font-weight="800" font-size="16" fill="#2b1230">Искра</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Студия «Искра»</span><span>Демонстрационная версия: данные примерные</span></div></footer>
+
+<script>
+(function(){
+  const DIRS = {
+    yoga:{n:'Йога',c:'var(--violet)',g:'adult',d:'Мягкая практика на гибкость и спокойствие.',dur:60,lvl:1},
+    pilates:{n:'Пилатес',c:'var(--mint)',g:'adult',d:'Сильный корпус и красивая осанка.',dur:55,lvl:2},
+    hiit:{n:'HIIT',c:'var(--orange)',g:'adult',d:'Интервалы на максимум: сжигаем калории за 40 минут.',dur:40,lvl:3},
+    zumba:{n:'Зумба',c:'var(--pink)',g:'adult',d:'Танцевальная кардио-вечеринка под латину.',dur:60,lvl:2},
+    func:{n:'Функциональные',c:'var(--blue)',g:'adult',d:'Силовая работа с весом тела и гантелями.',dur:50,lvl:2},
+    kids:{n:'Дети 3–10',c:'var(--yellow)',g:'kids',d:'Игровая гимнастика, координация и первая растяжка.',dur:45,lvl:1,age:'3–10 лет'},
+    teens:{n:'Подростки 12–17',c:'var(--lime)',g:'kids',d:'Общая физподготовка, осанка и уверенность в себе.',dur:60,lvl:2,age:'12–17 лет'},
+    health:{n:'Здоровье',c:'var(--teal)',g:'health',d:'Здоровая спина, суставная гимнастика 50+, дыхание и растяжка, занятия для будущих мам.',dur:50,lvl:1}
+  };
+  const GROUPS = {
+    adult:['Взрослые','Выберите интенсивность под себя.'],
+    kids:['Дети и подростки','Занятия с возрастными группами.'],
+    health:['Оздоровление','Спокойные группы для спины, суставов, дыхания и будущих мам.']
+  };
+  // [день 0=Пн, время, направление, название, тренер, уровень, мест]
+  const S = [
+    [0,'07:30','yoga','Утренняя йога',0,'Начинающие',6],[0,'10:00','health','Здоровая спина',3,'Все уровни',2],[0,'17:00','kids','Весёлая гимнастика',4,'3–10 лет',5],[0,'18:30','hiit','HIIT Burn',1,'Продвинутые',0],[0,'19:30','zumba','Зумба',2,'Все уровни',8],
+    [1,'09:30','pilates','Пилатес',5,'Средний',4],[1,'11:00','health','Суставная гимнастика 50+',3,'Все уровни',7],[1,'17:30','teens','Фитнес для подростков',1,'12–17 лет',6],[1,'19:00','func','Функциональная тренировка',1,'Средний',3],[1,'20:00','yoga','Вечерняя йога',0,'Все уровни',9],
+    [2,'08:00','hiit','HIIT Burn',1,'Продвинутые',5],[2,'10:30','health','Для будущих мам',5,'Все уровни',4],[2,'17:00','kids','Весёлая гимнастика',4,'3–10 лет',0],[2,'18:30','pilates','Пилатес',5,'Начинающие',6],[2,'19:30','zumba','Зумба',2,'Все уровни',2],
+    [3,'07:30','yoga','Утренняя йога',0,'Начинающие',8],[3,'10:00','health','Дыхание и растяжка',3,'Все уровни',6],[3,'17:30','teens','Фитнес для подростков',1,'12–17 лет',3],[3,'19:00','func','Функциональная тренировка',1,'Средний',7],[3,'20:00','hiit','HIIT Night',1,'Средний',4],
+    [4,'09:00','pilates','Пилатес',5,'Все уровни',5],[4,'10:30','health','Здоровая спина',3,'Все уровни',8],[4,'17:00','kids','Игровая гимнастика',4,'3–10 лет',7],[4,'18:30','zumba','Зумба',2,'Все уровни',1],[4,'19:30','yoga','Йога-флоу',0,'Средний',6],
+    [5,'10:00','kids','Весёлая гимнастика',4,'3–10 лет',6],[5,'11:00','func','Функциональная тренировка',1,'Все уровни',5],[5,'12:00','zumba','Зумба-party',2,'Все уровни',9],[5,'13:00','teens','Фитнес для подростков',1,'12–17 лет',4],
+    [6,'10:30','yoga','Йога для всех',0,'Начинающие',8],[6,'12:00','health','Дыхание и растяжка',3,'Все уровни',5],[6,'13:30','pilates','Пилатес',5,'Начинающие',0],[6,'17:00','hiit','HIIT Burn',1,'Средний',6]
+  ].map((r,i)=>({id:i,day:r[0],time:r[1],dir:r[2],title:r[3],trainer:r[4],level:r[5],seats:r[6]}));
+  const TR = [
+    {n:'Анна Волкова',r:'Йога',c:'var(--violet)',t:'Практикует 10 лет. Умеет объяснить позу так, что получается у всех.'},
+    {n:'Дмитрий Орлов',r:'HIIT, функциональные, подростки',c:'var(--orange)',t:'Мастер спорта. Заряжает энергией и держит технику под контролем.'},
+    {n:'Мария Лис',r:'Зумба',c:'var(--pink)',t:'Хореограф. После её занятий невозможно не улыбаться.'},
+    {n:'Елена Ким',r:'Здоровье',c:'var(--teal)',t:'Инструктор ЛФК. Ведёт спину, суставы и дыхательные группы.'},
+    {n:'Ольга Миронова',r:'Дети 3–10',c:'var(--yellow)',t:'Детский тренер с педагогическим образованием. Превращает зарядку в игру.'},
+    {n:'София Ахметова',r:'Пилатес, занятия для будущих мам',c:'var(--mint)',t:'Сертифицированный инструктор по пилатесу и пренатальным программам.'}
+  ];
+  const DAYS=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  const tr=i=>TR[i].n;
+  const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
+  const now=new Date();
+  const todayIdx=(now.getDay()+6)%7;
+  const nowMin=now.getHours()*60+now.getMinutes();
+  const dateOf=i=>{const d=new Date(now);d.setDate(now.getDate()+i-todayIdx);return d};
+  const fmt=d=>d.getDate()+'.'+String(d.getMonth()+1).padStart(2,'0');
+  const bySort=(a,b)=>toMin(a.time)-toMin(b.time);
+  const dots=n=>'●'.repeat(n)+'○'.repeat(3-n);
+
+  // stickers
+  $('stickers').innerHTML=Object.values(DIRS).map((d,i)=>`<span class="sticker" style="background:${d.c};animation-delay:${i*70}ms">${d.n}</span>`).join('');
+
+  // today block
+  (function(){
+    let day=todayIdx,list=S.filter(s=>s.day===day&&toMin(s.time)>nowMin).sort(bySort);
+    let note='Ближайшие занятия';
+    if(!list.length){day=(todayIdx+1)%7;list=S.filter(s=>s.day===day).sort(bySort);note=todayIdx===6?'Сегодня занятий больше нет — вот понедельник':'Сегодня занятий больше нет — вот завтра'}
+    $('todayNote').textContent=note;
+    $('todayList').innerHTML=list.slice(0,3).map(s=>`<div class="mini"><b>${s.time}</b><i class="dot" style="background:${DIRS[s.dir].c}"></i><div>${esc(s.title)}<span>${esc(tr(s.trainer))}</span></div></div>`).join('');
+  })();
+
+  // directions
+  $('dirGroups').innerHTML=Object.keys(GROUPS).map(g=>`<div class="group"><h3>${GROUPS[g][0]}</h3><p>${GROUPS[g][1]}</p><div class="cards">${
+    Object.values(DIRS).filter(d=>d.g===g).map(d=>`<article class="card" style="--c:${d.c}"><h4>${d.n}</h4><p>${d.d}</p><div class="tags"><span class="tag">${d.dur} мин</span><span class="tag" title="Интенсивность">${dots(d.lvl)}</span>${d.age?`<span class="tag">${d.age}</span>`:''}</div></article>`).join('')
+  }</div></div>`).join('');
+
+  // schedule
+  let selDay=todayIdx,selDir='all';
+  $('days').innerHTML=DAYS.map((n,i)=>`<button class="day" role="tab" data-d="${i}" aria-selected="${i===todayIdx}">${n}<span>${fmt(dateOf(i))}</span>${i===todayIdx?'<em>сегодня</em>':''}</button>`).join('');
+  $('filters').innerHTML=`<button class="chip all" data-f="all" aria-pressed="true">Все</button>`+Object.entries(DIRS).map(([k,d])=>`<button class="chip" data-f="${k}" style="--c:${d.c}" aria-pressed="false"><i class="dot" style="background:${d.c}"></i>${d.n}</button>`).join('');
+  function render(){
+    const l=S.filter(s=>s.day===selDay&&(selDir==='all'||s.dir===selDir)).sort(bySort);
+    $('schedList').innerHTML=l.length?l.map((s,i)=>{
+      const d=DIRS[s.dir];
+      const seats=s.seats===0?'<span class="seats out">Мест нет</span>':`<span class="seats ${s.seats<=3?'low':''}">Свободно: ${s.seats}</span>`;
+      return `<div class="row" style="--c:${d.c};animation-delay:${i*40}ms"><div class="t">${s.time}<small>${d.dur} мин</small></div><div><h3>${esc(s.title)}</h3><p>${d.n} · ${esc(tr(s.trainer))} · ${esc(s.level)}</p></div><div class="side">${seats}<button class="btn sm" data-id="${s.id}" ${s.seats===0?'disabled':''}>Записаться</button></div></div>`}).join('')
+      :`<div class="empty">В этот день занятий по выбранному направлению нет. Попробуйте другой день или фильтр.</div>`;
+  }
+  $('days').onclick=e=>{const b=e.target.closest('.day');if(!b)return;selDay=+b.dataset.d;[...$('days').children].forEach(x=>x.setAttribute('aria-selected',x===b));render()};
+  $('filters').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;selDir=b.dataset.f;[...$('filters').children].forEach(x=>x.setAttribute('aria-pressed',x===b));render()};
+  $('schedList').onclick=e=>{const b=e.target.closest('button[data-id]');if(!b||b.disabled)return;$('classSel').value=b.dataset.id;resetOk();$('signup').scrollIntoView({behavior:'smooth'});setTimeout(()=>$('name').focus({preventScroll:true}),500)};
+  render();
+
+  // trainers
+  $('trainerList').innerHTML=TR.map(t=>`<article class="trainer" style="--c:${t.c}"><div class="ava" aria-hidden="true">${t.n[0]}</div><h3>${t.n}</h3><div class="role">${t.r}</div><p>${t.t}</p></article>`).join('');
+
+  // form
+  const names=['понедельник','вторник','среду','четверг','пятницу','субботу','воскресенье'];
+  $('classSel').innerHTML='<option value="">Любое — подберёт администратор</option>'+S.filter(s=>s.seats>0).sort((a,b)=>a.day-b.day||bySort(a,b)).map(s=>`<option value="${s.id}">${DAYS[s.day]} ${s.time} — ${esc(s.title)}</option>`).join('');
+  function setErr(id,msg,inp){$(id).textContent=msg;if(inp)inp.setAttribute('aria-invalid',!!msg)}
+  function resetOk(){$('ok').hidden=true;$('form').hidden=false}
+  $('form').onsubmit=e=>{
+    e.preventDefault();
+    const name=$('name').value.trim(),digits=$('phone').value.replace(/\D/g,'');
+    let bad=false;
+    if(name.length<2){setErr('nameErr','Введите имя — минимум 2 символа',$('name'));bad=true}else setErr('nameErr','',$('name'));
+    if(digits.length<10){setErr('phoneErr','Введите телефон полностью — не меньше 10 цифр',$('phone'));bad=true}else setErr('phoneErr','',$('phone'));
+    if(!$('agree').checked){setErr('agreeErr','Нужно согласие на обработку персональных данных',$('agree'));bad=true}else setErr('agreeErr','',$('agree'));
+    if(bad){const f=$('form').querySelector('[aria-invalid=true]');f&&f.focus();return}
+    const who=document.querySelector('input[name=who]:checked').value;
+    const s=S[+$('classSel').value];
+    const sel=$('classSel').value!==''?`${names[s.day][0].toUpperCase()+names[s.day].slice(1)}, ${s.time} — «${esc(s.title)}»`:'занятие подберёт администратор';
+    $('ok').innerHTML=`<b>Спасибо, ${esc(name)}!</b>Заявка принята: ${sel}.<br>Администратор перезвонит вам и подтвердит время.${who!=='Я'?'<br>Мы также уточним возраст участника, чтобы подобрать подходящую группу.':''}`;
+    $('form').hidden=true;$('ok').hidden=false;$('form').reset();
+  };
+})();
+</script>
+</body>
+</html>
